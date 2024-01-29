@@ -4,9 +4,9 @@ import App from './App.jsx'
 import './index.css'
 
 const DATA = [
-  { id: "todo-0", name: "ProcrastiNOT 1", completed: true, reminder: "" },
-  { id: "todo-1", name: "ProcrastiNOT 2", completed: false },
-  { id: "todo-2", name: "ProcrastiNOT 3", completed: false },
+  { id: "todo-0", name: "ProcrastiNOT 1", completed: false, reminder: "" },
+  { id: "todo-1", name: "ProcrastiNOT 2", completed: false, reminder: Date() },
+  { id: "todo-2", name: "ProcrastiNOT 3", completed: false, reminder: Date() },
 ];
 
 
