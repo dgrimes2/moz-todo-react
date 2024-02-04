@@ -28,19 +28,32 @@ function App(props) {
   //           dateFormat="MMMM d, yyyy hh:mmaa"
   //         />
   function addTask(name, reminder) {
-    const newTask = { id: `todo-${nanoid()}`, name, completed: false, reminder: "" };
+    const newTask = { id: `todo-${nanoid()}`, name, completed: false, reminder};
       // name is just a string, so put it into an object to keep formatting of other tasks
       // then throw the newTask object into an array to update state
+      console.log(props);
+      console.log(reminder);
       console.log(typeof(reminder));
+      console.log(props.reminder);
+      console.log(typeof(props.reminder));
+
     setTasks([...tasks, newTask]);
+
+    console.log(props);
     console.log(props.reminder);
+    console.log(reminder);
+    console.log(props.reminder);
+    console.log(tasks);
+    console.log(newTask.reminder);
+
+    // return newTask;
   }
   
   function toggleTaskCompleted(id) {
 
     // console.log(tasks[0]);
     const updatedTasks = tasks.map((task) => {
-      // if this task has the same ID as the edited task
+      // if this task has the same ID as the edited task (for the checkboxes)
       if (id === task.id) {
         // use object spread to make a new object
         // whose `completed` prop has been inverted
@@ -65,11 +78,12 @@ function App(props) {
     <Todo 
       id ={task.id} 
       name = {task.name} 
-      completed = {task.completed} 
+      // completed = {task.completed} 
       key = {task.id}
       toggleTaskCompleted = {toggleTaskCompleted}
       deleteTask = {deleteTask}
-      reminder = "" />));
+      reminder = {task.reminder}
+       />));
   
   
     // task count
