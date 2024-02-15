@@ -6,6 +6,8 @@ import Todo from './Components/Todo';
 import Form from './Components/Form';
 import { nanoid } from 'nanoid';
 import DatePicker from 'react-datepicker';
+import CountdownTimer from './Components/CountdownTimer';
+import checkReminder from './Components/Form';
 
 
 
@@ -83,6 +85,7 @@ function App(props) {
       toggleTaskCompleted = {toggleTaskCompleted}
       deleteTask = {deleteTask}
       reminder = {task.reminder}
+      timer = {CountdownTimer}
        />));
   
   
@@ -90,10 +93,22 @@ function App(props) {
   const headingText = `${taskList.length} tasks remaining`;
     console.log(taskList);
 
+  const THREE_DAYS_IN_MS = 3 * 24 * 60 * 60 * 1000;
+  const NOW_IN_MS = new Date().getTime();
+  const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
+  const testTimer = checkReminder;
+  console.log(THREE_DAYS_IN_MS);
+  console.log(NOW_IN_MS);
+  console.log(new Date());
+  console.log(new Date().getMilliseconds());
+  console.log(checkReminder(props));
+  console.log(DatePicker.props)
+
+
   return (
     <div className="todoapp stack-large">
-      <h1 hidden = {false}>ProcrastiNOT ToDo App</h1>
-      <Form addTask = {addTask} />
+      <h1 hidden={false}>ProcrastiNOT ToDo App</h1>
+      <Form addTask={addTask} />
       <h2 id="list-heading"> {headingText} </h2>
       <ul
         role="list"

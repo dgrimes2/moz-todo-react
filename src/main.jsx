@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import Todo from './Components/Todo.jsx';
+import CountdownTimer from './Components/CountdownTimer.jsx';
+
 
 const DATA = [
   { id: "todo-0", name: "ProcrastiNOT 1", completed: false, reminder: Date() },

@@ -1,52 +1,28 @@
-#root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+.countdown-container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
   }
   
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
+  .countdown-container > form {
+    padding: 0.5rem;
   }
   
-  @keyframes logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  .countdown-container > form > label {
+    margin-right: 1rem;
   }
   
-  @media (prefers-reduced-motion: no-preference) {
-    a:nth-of-type(2) .logo {
-      animation: logo-spin infinite 20s linear;
-    }
-  }
-  
-  .card {
-    padding: 2em;
-  }
-  
-  .read-the-docs {
-    color: #888;
-  }
-
   .expired-notice {
     text-align: center;
     padding: 2rem;
     border: 1px solid #ebebeb;
     border-radius: 0.25rem;
     margin: 0.5rem;
+    background-color: #ececec;
+    box-shadow: 10px 10px #cfc9c9;
   }
   
   .expired-notice > span {
@@ -69,13 +45,15 @@
     justify-content: center;
     align-items: center;
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 2.25rem;
     line-height: 1.75rem;
     padding: 0.5rem;
     border: 1px solid #ebebeb;
     border-radius: 0.25rem;
     text-decoration: none;
     color: #000;
+    background-color: #ececec;
+    box-shadow: 10px 10px #cfc9c9;
   }
   
   .show-counter .countdown {
@@ -96,7 +74,17 @@
   
   .show-counter .countdown > span {
     text-transform: uppercase;
-    font-size: 0.75rem;
-    line-height: 1rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
   
+  @media only screen and (max-width: 500px) {
+    .show-counter .countdown > span {
+      font-size: 1rem;
+      line-height: 1rem;
+    }
+  
+    .show-counter .countdown-link {
+      font-size: 1.5rem;
+    }
+  }

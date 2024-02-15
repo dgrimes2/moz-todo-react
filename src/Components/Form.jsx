@@ -1,7 +1,11 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect } from "react";
+import { useState, useRef } from "react";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
+import Countdown from "react-countdown";
+import CountdownTimer from "./CountdownTimer";
+import '../App.css';
+
 // import {DatePicker} from 'rsuite'
 // import { useContext } from "react";
 // import { Context } from "react";
@@ -13,9 +17,9 @@ function Form(props) {
     const [selectedDate, setSelectedDate] = useState("");
     const [date, setDate] = useState("");
     const [reminder, setReminder] = useState();
-    // const [selectedDate, setSelectedDate] = useState("");
-
+   
     
+
     console.log(selectedDate);
     console.log(typeof(selectedDate));
     console.log(selectedDate.toLocaleString());
@@ -23,6 +27,7 @@ function Form(props) {
     console.log(reminder);
     console.log(typeof(reminder));
     // console.log(date);
+
 
 
     //Listener: Allows you to see what you're typing
@@ -45,6 +50,25 @@ function Form(props) {
     //     // props.addTask(reminder);
     // }
     
+    console.log(selectedDate);
+    console.log(new Date());
+    let rightNow = new Date();
+    let compDate = selectedDate;
+    let checkReminder = compDate - rightNow;
+    // console.log(props.reminder - new Date())
+    console.log(checkReminder);
+    // converted to seconds
+    console.log(checkReminder/1000);
+
+    
+    
+    
+    function reminderAlert() {
+      if (checkReminder <= 0) {
+        alert("Your due date has passed!!!");
+      }
+    }
+
     //Listener: Popup alert once you click to add task
     function handleSubmit(e) {
         e.preventDefault();
@@ -74,7 +98,13 @@ function Form(props) {
     console.log(reminder);
     console.log(typeof(reminder));
 
+  const THREE_DAYS_IN_MS = 3 * 24 * 60 * 60 * 1000;
+  const NOW_IN_MS = new Date().getTime();
+
+  const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
+
     return(
+      
       <form onSubmit = {handleSubmit}>
         <h2 className="label-wrapper">
           <label htmlFor="new-todo-input" className="label__lg">
@@ -91,7 +121,7 @@ function Form(props) {
           onChange = {handleChange}
           
         />
-             
+         
         <div>
           <DatePicker            
             showTimeInput = {true}
@@ -99,6 +129,7 @@ function Form(props) {
             // once date/time are selected update setDate
             placeholderText="Select Due Date"
             selected={selectedDate}
+            todayButton = "Today"
             // onSelect={handleDateSelect}
             // datetime = {props.datetime}
             // onClick = {props.onClick}
@@ -114,12 +145,28 @@ function Form(props) {
         <button 
           type="submit" 
           className="btn btn__primary btn__lg"
-          // onClick
+          // onClick = {function remAlert() {
+          //   if (checkReminder <= 0) {
+          //     alert("Your due date has passed!!!");
+          //   }
+          // }}
           >
           Add Task
         </button>
+
+        <div>
+      {/* <h1>Placeholder</h1> */}
+      <CountdownTimer targetDate={NOW_IN_MS + checkReminder} />
+      {/* <CountdownTimer targetDate={NOW_IN_MS+100000000} /> */}
+
+      
+    </div>
+    
       </form>
+      
+
     );
+    console.log(targetDate);
 };
 
 
